@@ -121,7 +121,6 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 padding: EdgeInsets.fromLTRB(24, 0, 24, 12),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
                       child: Align(
