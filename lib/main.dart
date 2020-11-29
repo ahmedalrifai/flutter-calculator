@@ -72,9 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   dynamic insertNumber(stringNum) {
     setState(() {
-      if (this.result.endsWith('.'))
-        this.result += stringNum;
-      else if (this.result == '0')
+      if (this.result == '0')
         this.result = stringNum;
       else
         this.result += stringNum;
