@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   bool isInteger(num value) => value is int || value == value.roundToDouble();
 
-  dynamic insertOperator(String op) {
+  dynamic insertOperand(String op) {
     setState(() {
       bool insertOperandCondition = operationHistory.endsWith('-') != true &&
           operationHistory.endsWith('+') != true &&
@@ -199,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: Colors.grey.shade200,
                             shape: CircleBorder(),
                             onPressed: () {
-                              insertOperator('÷');
+                              insertOperand('÷');
                             },
                             child: Center(
                               child: Text(
@@ -278,7 +278,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: Colors.grey.shade200,
                             shape: CircleBorder(),
                             onPressed: () {
-                              insertOperator('×');
+                              insertOperand('×');
                             },
                             child: Center(
                               child: Text(
@@ -357,7 +357,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: Colors.grey.shade200,
                             shape: CircleBorder(),
                             onPressed: () {
-                              insertOperator('-');
+                              insertOperand('-');
                             },
                             child: Center(
                               child: Text(
@@ -436,7 +436,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: Colors.grey.shade200,
                             shape: CircleBorder(),
                             onPressed: () {
-                              insertOperator('+');
+                              insertOperand('+');
                             },
                             child: Center(
                               child: Text(
