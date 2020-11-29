@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  dynamic eval() {
+  String eval() {
     String expString =
         this.operationHistory.replaceAll('×', '*').replaceAll('÷', '/');
     Expression expression = Expression.parse(expString);
