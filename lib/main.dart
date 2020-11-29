@@ -194,23 +194,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                            child: FlatButton(
-                              padding: EdgeInsets.all(16),
-                              color: Colors.grey.shade200,
-                              shape: CircleBorder(),
-                              onPressed: () {
-                                insertOperator('÷');
-                              },
-                              child: Center(
-                                child: Text(
-                                  '÷',
-                                  style: TextStyle(
-                                      color: Colors.grey.shade800,
-                                      fontSize: 32),
-                                ),
+                          child: FlatButton(
+                            padding: EdgeInsets.all(16),
+                            color: Colors.grey.shade200,
+                            shape: CircleBorder(),
+                            onPressed: () {
+                              insertOperator('÷');
+                            },
+                            child: Center(
+                              child: Text(
+                                '÷',
+                                style: TextStyle(
+                                    color: Colors.grey.shade800,
+                                    fontSize: 32),
                               ),
                             ),
                           ),
