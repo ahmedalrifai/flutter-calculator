@@ -52,7 +52,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String result = '0';
-  String tempResult = '0';
   String operand;
   String operationHistory = '';
 
