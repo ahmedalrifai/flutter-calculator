@@ -129,6 +129,30 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  Widget generateOperandButton(String operand, {double outerPadding = 0}) {
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.all(outerPadding),
+        child: FlatButton(
+          padding: EdgeInsets.all(16),
+          color: Colors.grey.shade200,
+          shape: CircleBorder(),
+          onPressed: () {
+            insertOperand(operand);
+          },
+          child: Center(
+            child: Text(
+              operand,
+              style: TextStyle(
+                  color: Colors.grey.shade800,
+                  fontSize: 32),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -215,24 +239,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                         ),
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.grey.shade200,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertOperand('÷');
-                            },
-                            child: Center(
-                              child: Text(
-                                '÷',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
+                        generateOperandButton('÷'),
                       ],
                     ),
                   ),
@@ -241,27 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       generateNumberButton('7'),
                       generateNumberButton('8'),
                       generateNumberButton('9'),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.grey.shade200,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertOperand('×');
-                            },
-                            child: Center(
-                              child: Text(
-                                '×',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      generateOperandButton('×', outerPadding: 8)
                     ],
                   ),
                   Padding(
@@ -271,24 +258,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         generateNumberButton('4'),
                         generateNumberButton('5'),
                         generateNumberButton('6'),
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.grey.shade200,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertOperand('-');
-                            },
-                            child: Center(
-                              child: Text(
-                                '-',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
+                        generateOperandButton('-')
                       ],
                     ),
                   ),
@@ -299,24 +269,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         generateNumberButton('1'),
                         generateNumberButton('2'),
                         generateNumberButton('3'),
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.grey.shade200,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertOperand('+');
-                            },
-                            child: Center(
-                              child: Text(
-                                '+',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
+                        generateOperandButton('+')
                       ],
                     ),
                   ),
