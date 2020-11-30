@@ -63,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
           operationHistory.endsWith('+') != true &&
           operationHistory.endsWith('×') != true &&
           operationHistory.endsWith('÷') != true;
-
       if (insertOperandCondition == true)
         this.operationHistory += op;
       this.result = '0';
@@ -301,24 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                         ),
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertNumber('0');
-                            },
-                            child: Center(
-                              child: Text(
-                                '0',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
+                        generateNumberButton('0'),
                         Expanded(
                           flex: 2,
                           child: Padding(
