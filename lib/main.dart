@@ -108,6 +108,27 @@ class _MyHomePageState extends State<MyHomePage> {
     return evaluator.eval(expression, context).toString();
   }
 
+  Widget generateNumberButton(String num) {
+    return Expanded(
+      child: FlatButton(
+        padding: EdgeInsets.all(16),
+        color: Colors.white,
+        shape: CircleBorder(),
+        onPressed: () {
+          insertNumber(num);
+        },
+        child: Center(
+          child: Text(
+            num,
+            style: TextStyle(
+                color: Colors.grey.shade800,
+                fontSize: 32),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,6 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
+
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -216,60 +238,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Row(
                     children: [
-                      Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertNumber('7');
-                            },
-                            child: Center(
-                              child: Text(
-                                '7',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                        ),
-                      ),
-                      Expanded(
-                        child: FlatButton(
-                          padding: EdgeInsets.all(16),
-                          color: Colors.white,
-                          shape: CircleBorder(),
-                          onPressed: () {
-                            insertNumber('8');
-                          },
-                          child: Center(
-                            child: Text(
-                              '8',
-                              style: TextStyle(
-                                  color: Colors.grey.shade800,
-                                  fontSize: 32),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: FlatButton(
-                          padding: EdgeInsets.all(16),
-                          color: Colors.white,
-                          shape: CircleBorder(),
-                          onPressed: () {
-                            insertNumber('9');
-                          },
-                          child: Center(
-                            child: Text(
-                              '9',
-                              style: TextStyle(
-                                  color: Colors.grey.shade800,
-                                  fontSize: 32),
-                            ),
-                          ),
-                        ),
-                      ),
+                      generateNumberButton('7'),
+                      generateNumberButton('8'),
+                      generateNumberButton('9'),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -297,60 +268,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Row(
                       children: [
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertNumber('4');
-                            },
-                            child: Center(
-                              child: Text(
-                                '4',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertNumber('5');
-                            },
-                            child: Center(
-                              child: Text(
-                                '5',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertNumber('6');
-                            },
-                            child: Center(
-                              child: Text(
-                                '6',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
+                        generateNumberButton('4'),
+                        generateNumberButton('5'),
+                        generateNumberButton('6'),
                         Expanded(
                           child: FlatButton(
                             padding: EdgeInsets.all(16),
@@ -376,60 +296,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Row(
                       children: [
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertNumber('1');
-                            },
-                            child: Center(
-                              child: Text(
-                                '1',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertNumber('2');
-                            },
-                            child: Center(
-                              child: Text(
-                                '2',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: FlatButton(
-                            padding: EdgeInsets.all(16),
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                            onPressed: () {
-                              insertNumber('3');
-                            },
-                            child: Center(
-                              child: Text(
-                                '3',
-                                style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ),
+                        generateNumberButton('1'),
+                        generateNumberButton('2'),
+                        generateNumberButton('3'),
                         Expanded(
                           child: FlatButton(
                             padding: EdgeInsets.all(16),
