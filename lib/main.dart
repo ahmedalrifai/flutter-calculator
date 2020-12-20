@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:expressions/expressions.dart';
 
@@ -54,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String result = '0';
   String operand;
   String operationHistory = '';
+  bool leftParenthesisExists = false;
 
   bool isInteger(num value) => value is int || value == value.roundToDouble();
 
@@ -63,8 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
           operationHistory.endsWith('+') != true &&
           operationHistory.endsWith('×') != true &&
           operationHistory.endsWith('÷') != true;
-      if (insertOperandCondition == true)
-        this.operationHistory += op;
+      if (insertOperandCondition == true) this.operationHistory += op;
       this.result = '0';
     });
   }
@@ -80,12 +81,32 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  dynamic insertParenthesis(parenthesis) {
+    setState(() {
+      if (parenthesis == '(') {
+        leftParenthesisExists = true;
+        if (this.result == '0') {
+          this.operationHistory = parenthesis;
+          this.result = parenthesis;
+        } else {
+          this.operationHistory += parenthesis;
+          this.result += parenthesis;
+        }
+      } else if (parenthesis == ')' && leftParenthesisExists == true) {
+        leftParenthesisExists = false;
+        this.operationHistory += parenthesis;
+        this.result += parenthesis;
+      }
+    });
+  }
+
   void backSpace() {
     setState(() {
       if (this.result.isNotEmpty) {
         this.result = this.result.substring(0, this.result.length - 1);
-        this.operationHistory = this.operationHistory.substring(
-            0, this.operationHistory.length - 1);
+        this.operationHistory = this
+            .operationHistory
+            .substring(0, this.operationHistory.length - 1);
       }
     });
   }
@@ -119,9 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Text(
             num,
-            style: TextStyle(
-                color: Colors.grey.shade800,
-                fontSize: 32),
+            style: TextStyle(color: Colors.grey.shade800, fontSize: 32),
           ),
         ),
       ),
@@ -142,9 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Center(
             child: Text(
               operand,
-              style: TextStyle(
-                  color: Colors.grey.shade800,
-                  fontSize: 32),
+              style: TextStyle(color: Colors.grey.shade800, fontSize: 32),
             ),
           ),
         ),
@@ -189,10 +206,41 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      FlatButton(
+                        color: Colors.grey.shade200,
+                        shape: CircleBorder(),
+                        onPressed: () {
+                          insertParenthesis('(');
+                        },
+                        child: Text(
+                          '(',
+                          style: TextStyle(
+                              color: Colors.grey.shade800, fontSize: 14),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 24,
+                      ),
+                      FlatButton(
+                        color: Colors.grey.shade200,
+                        shape: CircleBorder(),
+                        onPressed: () {
+                          insertParenthesis(')');
+                        },
+                        child: Text(
+                          ')',
+                          style: TextStyle(
+                              color: Colors.grey.shade800, fontSize: 14),
+                        ),
+                      ),
+                    ],
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Row(
@@ -294,8 +342,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Text(
                                 '.',
                                 style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 32),
+                                    color: Colors.grey.shade800, fontSize: 32),
                               ),
                             ),
                           ),
@@ -314,15 +361,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               onPressed: () {
                                 setState(() {
                                   this.result = eval();
-                                  this.operationHistory = this.result;
+                                  //this.operationHistory = this.result;
                                   this.operand = null;
                                 });
                               },
-                                child: Center(
-                                  child: Text(
-                                    '=',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 32),
+                              child: Center(
+                                child: Text(
+                                  '=',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 32),
                                 ),
                               ),
                             ),
