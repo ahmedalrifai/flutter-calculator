@@ -55,7 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
   String result = '0';
   String operand;
   String operationHistory = '';
-  bool leftParenthesisExists = false;
+  int numberOfLeftParenthesis = 0;
+  int numberOfRightParenthesis = 0;
 
   bool isInteger(num value) => value is int || value == value.roundToDouble();
 
@@ -84,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
   dynamic insertParenthesis(parenthesis) {
     setState(() {
       if (parenthesis == '(') {
-        leftParenthesisExists = true;
+        numberOfLeftParenthesis += 1;
         if (this.result == '0') {
           this.operationHistory = parenthesis;
           this.result = parenthesis;
@@ -92,8 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
           this.operationHistory += parenthesis;
           this.result += parenthesis;
         }
-      } else if (parenthesis == ')' && leftParenthesisExists == true) {
-        leftParenthesisExists = false;
+      } else if (parenthesis == ')' &&
+          numberOfLeftParenthesis > numberOfRightParenthesis) {
+        numberOfRightParenthesis += 1;
         this.operationHistory += parenthesis;
         this.result += parenthesis;
       }
