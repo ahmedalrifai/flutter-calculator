@@ -62,11 +62,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   dynamic insertOperand(String op) {
     setState(() {
-      bool insertOperandCondition = operationHistory.endsWith('-') != true &&
-          operationHistory.endsWith('+') != true &&
-          operationHistory.endsWith('×') != true &&
-          operationHistory.endsWith('÷') != true;
-      if (insertOperandCondition == true) this.operationHistory += op;
+      bool insertOperandCondition = operationHistory.endsWith('--') != true &&
+          operationHistory.endsWith('+-') != true &&
+          operationHistory.endsWith('×-') != true &&
+          operationHistory.endsWith('÷-') != true;
+      if (insertOperandCondition) {
+        this.operationHistory += op;
+      }
       this.result = '0';
     });
   }
@@ -86,12 +88,12 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       if (parenthesis == '(') {
         numberOfLeftParenthesis += 1;
-        if (this.result == '0') {
+        if (this.operationHistory.length < 1) {
           this.operationHistory = parenthesis;
           this.result = parenthesis;
         } else {
           this.operationHistory += parenthesis;
-          this.result += parenthesis;
+          this.result = parenthesis;
         }
       } else if (parenthesis == ')' &&
           numberOfLeftParenthesis > numberOfRightParenthesis) {
